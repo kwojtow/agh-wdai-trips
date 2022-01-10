@@ -1,0 +1,38 @@
+<div class="row shadow-lg p-3 mb-5 bg-white rounded"
+    [ngClass]="maxPrice == trip.price ? 'border border-danger' : (minPrice == trip.price ? 'border border-success' : '')">
+    <div class="col-3"><img src="{{ trip.picture }}" class="img-fluid rounded-circle mx-auto d-block"></div>
+    <div class="col-6 container">
+        <div class="row">{{ trip.name | uppercase }}</div>
+        <div class="row">Kraj: {{ trip.country | uppercase}}</div>
+        <div class="row">{{ trip.startDate }} - {{trip.endDate}}</div>
+        <div class="row">{{ trip.description }}</div>
+        <div class="row">
+            <div *ngIf="trip.maxParticipantsNumber - trip.reservationNumber > 0; else completelyBooked"
+                [ngClass]="trip.maxParticipantsNumber - trip.reservationNumber <= 5 ? 'badge badge-warning' : 'badge badge-success' ">
+                Ilość dostępnych
+                miejsc:
+                {{ trip.maxParticipantsNumber - trip.reservationNumber }}</div>
+            <ng-template #completelyBooked>
+                <div class="badge badge-danger" role>Brak dostępnych miejsc</div>
+            </ng-template>
+        </div>
+        <div class="row">Cena: {{ trip.price | currencypln }}</div>
+        <div class="row">
+            <app-trip-rating [trip]="trip"></app-trip-rating>
+        </div>
+    </div>
+    <div class="col">
+        Liczba zarezerwowanych miejsc: {{trip.reservationNumber}}
+    </div>
+    <div class="col">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" (click)="tripReserved.emit(trip)"
+                [attr.disabled]="trip.reservationNumber < trip.maxParticipantsNumber ? null : ''">+</button>
+            <button type="button" class="btn btn-secondary" (click)="reservationCanceled.emit(trip)"
+                [attr.disabled]="trip.reservationNumber > 0 ? null : ''">-</button>
+        </div>
+    </div>
+    <div class="col">
+        <button class="btn btn-danger" (click)="tripDeleted.emit(trip)">Usuń wycieczkę</button>
+    </div>
+</div>

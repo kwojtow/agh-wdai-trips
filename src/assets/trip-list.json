@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Wycieczka 1",
+        "country": "Kraj 1",
+        "startDate": "Data rozpoczęcia 1",
+        "endDate": "Data zakończenia 1",
+        "price": "Cena 1",
+        "maxParticipantsNumber": "Maksymalna ilość miejsc 1",
+        "description": "Opis 1",
+        "picture": "Zdjęcie 1"
+    }
+]

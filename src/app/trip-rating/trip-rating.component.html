@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div *ngIf="!isDuringRating; else letsRateIt" (mouseover)="duringRating(true)">
+<span class="fa fa-star" [ngClass]="currentRate>=1?'checked':''"></span>
+<span class="fa fa-star" [ngClass]="currentRate>=2?'checked':''"></span>
+<span class="fa fa-star" [ngClass]="currentRate>=3?'checked':''"></span>
+<span class="fa fa-star" [ngClass]="currentRate>=4?'checked':''"></span>
+<span class="fa fa-star" [ngClass]="currentRate>=5?'checked':''"></span>
+</div>
+<ng-template #letsRateIt>
+<div (mouseleave)="duringRating(false)">
+    <span class="fa fa-star" (click)="rate(1)" (mouseover)="tmpRate(1)" [ngClass]="currentTmpRate>=1?'tmpChecked':''"></span>
+    <span class="fa fa-star" (click)="rate(2)" (mouseover)="tmpRate(2)" [ngClass]="currentTmpRate>=2?'tmpChecked':''"></span>
+    <span class="fa fa-star" (click)="rate(3)" (mouseover)="tmpRate(3)" [ngClass]="currentTmpRate>=3?'tmpChecked':''"></span>
+    <span class="fa fa-star" (click)="rate(4)" (mouseover)="tmpRate(4)" [ngClass]="currentTmpRate>=4?'tmpChecked':''"></span>
+    <span class="fa fa-star" (click)="rate(5)" (mouseover)="tmpRate(5)" [ngClass]="currentTmpRate>=5?'tmpChecked':''"></span>
+</div>
+</ng-template>
+<hr>
+<pre *ngIf="trip.ratesNumber > 0; else noRates">Średnia ocena: <b>{{trip.ratesSum / trip.ratesNumber | number}}</b></pre>
+<ng-template #noRates>
+    <pre>Brak ocen</pre>
+</ng-template>

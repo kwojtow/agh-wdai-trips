@@ -1,0 +1,27 @@
+<form class="form-grop mx-5" [formGroup]="tripForm" (ngSubmit)="addTrip(tripForm)" >
+    <h2>Dodaj wycieczkę</h2>
+    <label class="mt-3">Nazwa:</label>
+    <input class="form-control w-75" name="name" formControlName="name">
+    <span class="text-danger d-block" *ngIf="formErrors.name">{{ formErrors.name }}</span>
+    <label class="mt-3">Kraj:</label>
+    <input class="form-control w-25" name="country" formControlName="country">
+    <span class="text-danger d-block" *ngIf="formErrors.country">{{ formErrors.country }}</span>
+    <label class="mt-3">Od kiedy:</label>
+    <input class="form-control w-25" name="startDate" formControlName="startDate" type="date">
+    <span class="text-danger d-block" *ngIf="formErrors.startDate">{{ formErrors.startDate }}</span>
+    <label class="mt-3">Do kiedy:</label>
+    <input class="form-control w-25" name="endDate" formControlName="endDate" type="date">
+    <span class="text-danger d-block" *ngIf="formErrors.endDate">{{ formErrors.endDate }}</span>
+    <label class="mt-3">Cena:</label>
+    <input class="form-control w-25" name="price" formControlName="price" type="number">
+    <span class="text-danger d-block" *ngIf="formErrors.price">{{ formErrors.price }}</span>
+    <label class="mt-3">Maksymalna ilość uczestników:</label>
+    <input class="form-control w-25" name="maxParticipantsNumber" formControlName="maxParticipantsNumber" type="number">
+    <span class="text-danger d-block" *ngIf="formErrors.maxParticipantsNumber">{{ formErrors.maxParticipantsNumber }}</span>
+    <label class="mt-3">Opis:</label>
+    <textarea class="form-control" name="description" formControlName="description"></textarea>
+    <label class="mt-3">Obrazek:</label>
+    <input class="form-control w-50" name="picture" formControlName="picture">
+
+    <button class="btn btn-success my-3" [disabled]="!tripForm.valid" type="submit">Send</button>
+</form>

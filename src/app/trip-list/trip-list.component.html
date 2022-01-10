@@ -1,0 +1,8 @@
+<div  class="container">
+<app-trip-filter [tripsList]="trips" (tripsFiltered)="setFilter($event)"></app-trip-filter>
+<div [ngClass]="currentlyReservedTrips > 10 ? 'alert alert-success' : 'alert alert-danger' ">Liczba aktualnie
+    zarezerwowanych wycieczek: {{ currentlyReservedTrips }}</div>
+<app-trip *ngFor="let trip of (trips | search : tripsFilter)" [trip]="trip" [maxPrice]="maxPrice" [minPrice]="minPrice"
+    (tripReserved)="reserve($event)" (reservationCanceled)="cancel($event)" (tripDeleted)="deleteTrip($event)"></app-trip>
+<app-trip-form (tripAdded)="addTrip($event)"></app-trip-form>
+</div>

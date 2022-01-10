@@ -1,0 +1,27 @@
+<h2 class="mx-3">Filtry</h2>
+<form class="form-inline mx-3 mb-3" [formGroup]="tripFilterForm">
+    <div class="form-inline">
+        <label class="mr-1">Kraj</label>
+        <select class="form-control" name="country" formControlName="country">
+            <option value=""></option>
+            <option *ngFor="let trip of tripsList" value="{{trip.country}}">{{ trip.country }}</option>
+        </select>
+    </div>
+    <div class="form-inline">
+        <label class="ml-3 mr-1" for="minPrice">Cena</label>
+        <input class="form-control my-2" name="minPrice" type="number" min="{{ minPrice }}" max="{{ maxPrice }}"
+            formControlName="minPrice"> -
+        <input class="form-control" name="maxPrice" type="number" min="{{ minPrice }}" max="{{ maxPrice }}"
+            formControlName="maxPrice">
+    </div>
+    <div class="form-inline">
+        <label class="ml-3 mr-1">Data</label>
+        <input class="form-control my-2" name="startDate" type="date" formControlName="startDate"> -
+        <input class="form-control my-2" name="endDate" type="date" formControlName="endDate">
+    </div>
+    <div class="form-inline">
+        <label class="ml-3 mr-1" for="minRate">Ocena</label>
+        <input class="form-control my-2" name="minRate" type="number" min="0" max="5" formControlName="minRate"> -
+        <input class="form-control my-2" name="maxRate" type="number" min="0" max="5" formControlName="maxRate">
+    </div>
+</form>
