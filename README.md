@@ -1,4 +1,5 @@
 # Trips
+## A simple application for booking trips, created with Angular for the "Introduction to internet applications" course at AGH
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
